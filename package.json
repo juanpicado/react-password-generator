@@ -1,0 +1,28 @@
+{
+  "name": "react-password-generator",
+  "version": "0.1.0-alpha.3",
+  "description": "react password generator component",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src/index.jsx  --out-file lib/index.js",
+    "prepublish": "npm run build",
+    "dev": "webpack --watch"
+  },
+  "files": [
+    "lib/index.js"
+  ],
+  "author": "Juan Picado <me@jotadeveloper.com> (http://jotadeveloper.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack-react-conf": "^1.0.5"
+  },
+  "dependencies": {
+    "react-tap-event-plugin": "^1.0.0",
+    "password-generator": "^2.0.2",
+    "material-ui": "^0.15.2"
+  },
+  "peerDependencies": {
+    "react": "^0.14 || ^15.0.0-rc || ^15.0",
+    "react-dom": "^0.14 || ^15.0.0-rc || ^15.0"
+  }
+}
