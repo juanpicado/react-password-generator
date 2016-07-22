@@ -9,7 +9,6 @@ import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import LinearProgress from 'material-ui/LinearProgress';
 import Slider from 'material-ui/Slider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Copy from 'material-ui/svg-icons/content/content-copy';
 import Clear from 'material-ui/svg-icons/content/clear';
 import Save from 'material-ui/svg-icons/content/save';
@@ -81,13 +80,6 @@ const styles = {
         marginBottom: 16,
     }
 };
-
-const muiTheme = getMuiTheme({
-    palette: {
-        accent1Color: deepOrange500
-    },
-});
-
 
 class PasswordInput extends Component {
     constructor(props) {
