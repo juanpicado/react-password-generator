@@ -2,7 +2,6 @@
  * Created by jpicado on 15/07/16.
  */
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import generatePassword from 'password-generator';
 import RaisedButton from 'material-ui/RaisedButton';
 import {deepOrange500} from 'material-ui/styles/colors';
@@ -357,7 +356,5 @@ class PasswordGeneratorApp extends Component {
         );
     }
 }
-
-ReactDOM.render(<PasswordGeneratorApp />, document.getElementById('app'));
 
 export default PasswordGeneratorApp;

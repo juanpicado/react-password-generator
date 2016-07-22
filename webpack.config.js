@@ -12,7 +12,6 @@ conf.plugins = [];
 conf.externals = [
     {
         "react" : true,
-        "react-dom" : true,
         "password-generator" : true,
         "react-tap-event-plugin"  : true
     },
