@@ -1,6 +1,7 @@
 /**
  * Created by jpicado on 15/07/16.
  */
+
 import React, {Component} from 'react';
 import generatePassword from 'password-generator';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -16,7 +17,6 @@ import Alert from 'material-ui/svg-icons/notification/priority-high';
 import FlatButton from 'material-ui/FlatButton';
 import Snackbar from 'material-ui/Snackbar';
 import IconButton from 'material-ui/IconButton';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import Toggle from 'material-ui/Toggle';
 
 var maxLength = 18;
@@ -30,10 +30,6 @@ var LOWERCASE_RE = /([a-z])/g;
 var NUMBER_RE = /([\d])/g;
 var SPECIAL_CHAR_RE = /([\?\-])/g;
 var NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
-
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
 
 const styles = {
     container: {
@@ -333,11 +329,11 @@ class PasswordGeneratorApp extends Component {
         } else {
             input =(<div>
                 <RaisedButton
-                    label="Get your new password !!"
+                    label="Generate Password"
                     secondary={true}
                     onTouchTap={this.launchPassword.bind(this)}
                 />
-                </div>)
+                </div>);
         }
         return (
             <div>
