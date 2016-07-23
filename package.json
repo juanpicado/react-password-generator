@@ -1,6 +1,6 @@
 {
   "name": "react-password-generator",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0",
   "description": "react password generator component",
   "main": "lib/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/juanpicado/react-password-generator"
+    "url": "https://github.com/juanpicado/react-password-generator.git"
   },
   "files": [
     "lib/index.js",
@@ -23,10 +23,6 @@
   "license": "MIT",
   "devDependencies": {
     "webpack-react-conf": "^1.0.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/juanpicado/react-password-generator.git"
   },
   "dependencies": {
     "react-tap-event-plugin": "^1.0.0",
