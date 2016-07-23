@@ -7,6 +7,14 @@
     "prepublish": "npm run build",
     "build": "webpack"
   },
+  "keywords": [
+    "react",
+    "react-component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juanpicado/react-password-generator"
+  },
   "files": [
     "lib/index.js",
     "package.json"
