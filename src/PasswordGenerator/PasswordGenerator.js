@@ -1,7 +1,6 @@
 /**
  * Created by jpicado on 15/07/16.
  */
-
 import React, {Component} from 'react';
 import generatePassword from 'password-generator';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -39,7 +38,8 @@ const styles = {
     block: {
         maxWidth: 250,
         textAlign: 'left',
-        margin: '0 auto'
+        margin: '20px auto',
+
     },
     input : {
         textAlign: 'center',
@@ -195,54 +195,6 @@ class PasswordInput extends Component {
                     />
                     <LinearProgress mode="determinate" value={this.state.completed} />
                 </div>
-                <div>
-                    <IconButton touch={false}
-                                tooltipPosition="top-left"
-                                onTouchTap={this.copy.bind(this)}>
-                        <Copy></Copy>
-                    </IconButton>
-                    <IconButton touch={false}
-                                tooltipPosition="top-left"
-                                onTouchTap={this.props.clean}
-                                tooltip="Clean">
-                        <Clear></Clear>
-                    </IconButton>
-                    <IconButton touch={false}
-                                tooltipPosition="top-left"
-                                onTouchTap={this.save.bind(this)}
-                                tooltip="Save">
-                        <Save></Save>
-                    </IconButton>
-                    <Dialog
-                        title="Save Password"
-                        actions={actions}
-                        modal={false}
-                        open={this.state.dialog}
-                        onRequestClose={this.handleClose.bind(this)}>
-                        <TextField
-                            disabled={true}
-                            id="text-field-controlled"
-                            inputStyle={styles_dialog}
-                            style={styles.dialog_text}
-                            underlineStyle={styles.dialog_text}
-                            textareaStyle={styles.dialog_text}
-                            underlineDisabledStyle={styles.dialog_text}
-                            underlineShow={false}
-                            fullWidth={false}
-                            value={this.props.password}
-                        />
-                        <TextField
-                            disabled={false}
-                            id="text-field-label"
-                            onChange={this.handleChange.bind(this)}
-                            style={styles.save_text}
-                            value={this.state.label}
-                        />
-                        <div>
-                            <Alert></Alert> This will save password locally and non encrypted.
-                        </div>
-                    </Dialog>
-                </div>
             </div>
         );
     }
@@ -291,19 +243,11 @@ class PasswordGeneratorApp extends Component {
         var input = <span></span>;
         if (this.state.password != "") {
            input = (
-               <div>
+               <div className="test">
                    <PasswordInput
                        clean={this.clean.bind(this)}
                        password={this.state.password}>
-                   </PasswordInput>
-                   <div style={styles.sliders}>
-                        <Slider name="strong"
-                            description="How strong you need the password?"
-                            onChange={this.changeComplexity.bind(this)}
-                            value={this.state.complexity}
-                            min={0.1}
-                            defaultValue={0.5} />
-                   </div>
+                   </PasswordInput>                   
                    <div style={styles.block}>
                        <Toggle
                            label="Include Numbers"
@@ -324,12 +268,20 @@ class PasswordGeneratorApp extends Component {
                            style={styles.toggle}
                        />
                    </div>
+                   <div style={styles.sliders}>
+                        <Slider name="strong"
+                            description="How strong you need the password?"
+                            onChange={this.changeComplexity.bind(this)}
+                            value={this.state.complexity}
+                            min={0.1}
+                            defaultValue={0.5} />
+                   </div>
                </div>
            );
         } else {
             input =(<div>
                 <RaisedButton
-                    label="Generate Password"
+                    label="Generate Password2"
                     secondary={true}
                     onTouchTap={this.launchPassword.bind(this)}
                 />

@@ -3,7 +3,7 @@
  */
 const DefaultConfig = require('webpack-react-conf');
 const conf = DefaultConfig(
-    './src/index.jsx',
+    './src/index.js',
     './lib/index.js',
     'PasswordGenerator',
     'umd');

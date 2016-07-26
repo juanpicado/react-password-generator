@@ -10,6 +10,11 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "eslint": "^3.0.1",
+    "eslint-find-rules": "^1.11.0",
+    "eslint-plugin-babel": "^3.2.0",
+    "eslint-plugin-mocha": "^4.0.0",
+    "eslint-plugin-react": "^5.0.1",
     "webpack-dev-server": "^1.14.1",
     "webpack-react-conf": "^1.0.5",
     "html-webpack-plugin": "^2.7.2",
@@ -18,7 +23,7 @@
   },
   "dependencies": {
     "material-ui": "^0.15.0",
-    "react-password-generator": "*",
+    "react-password-generator": "file:../",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-tap-event-plugin": "^1.0.0"
