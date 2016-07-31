@@ -17,6 +17,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Snackbar from 'material-ui/Snackbar';
 import IconButton from 'material-ui/IconButton';
 import Toggle from 'material-ui/Toggle';
+import style from './password-style.scss';
 
 var maxLength = 18;
 var minLength = 12;
@@ -220,6 +221,7 @@ class PasswordGeneratorApp extends Component {
         }
     }
     launchPassword(event) {
+        console.log("launchPassword");
         this.generateNewPassword(8);
     }
     generateNewPassword(maxLength) {
@@ -242,6 +244,7 @@ class PasswordGeneratorApp extends Component {
     render() {
         var input = <span></span>;
         if (this.state.password != "") {
+           console.log("password non empty");
            input = (
                <div className="test">
                    <PasswordInput
@@ -279,9 +282,10 @@ class PasswordGeneratorApp extends Component {
                </div>
            );
         } else {
+            console.log("password non empty");
             input =(<div>
                 <RaisedButton
-                    label="Generate Password2"
+                    label="Generate Password"
                     secondary={true}
                     onTouchTap={this.launchPassword.bind(this)}
                 />
