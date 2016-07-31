@@ -8,7 +8,7 @@ exports.stylingLoaders = function() {
             { test: /\.png$/, loader: "url-loader?limit=100000" , exclude: /node_modules/ },
             { test: /\.jpg$/, loader: "file-loader" , exclude: /node_modules/ },
             { test: /\.scss$/, loaders: styling.concat(['sass']) , exclude: /node_modules/},
-            { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1!postcss-loader'}
+            { test: /\.css$/, loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'}
             ];
 }
 
