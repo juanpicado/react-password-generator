@@ -4,7 +4,8 @@
 const DefaultConfig = require('webpack-react-conf');
 const conf = DefaultConfig(
     './src/index.js',
-    './lib/index.js',
+    'lib',
+    'index.js',
     'PasswordGenerator',
     'umd');
 // uncomment or override in order to disable uglify  (the default plugin)

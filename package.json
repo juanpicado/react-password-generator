@@ -45,11 +45,12 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.3",
+    "node-sass": "^3.8.0",
     "phantomjs-prebuilt": "^2.1.4",
     "react": "0.14.8",
     "react-addons-test-utils": "0.14.8",
     "react-dom": "0.14.8",
-    "webpack-react-conf": "^1.0.5"
+    "webpack-react-conf": "^1.0.9"
   },
   "dependencies": {
     "react-tap-event-plugin": "^1.0.0",
