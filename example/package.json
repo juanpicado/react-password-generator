@@ -16,7 +16,7 @@
     "eslint-plugin-mocha": "^4.0.0",
     "eslint-plugin-react": "^5.0.1",
     "webpack-dev-server": "^1.14.1",
-    "webpack-react-conf": "^1.0.5",
+    "webpack-react-conf": "^1.0.9",
     "html-webpack-plugin": "^2.7.2",
     "react-hot-loader": "^1.3.0",
     "transfer-webpack-plugin": "^0.1.4"
