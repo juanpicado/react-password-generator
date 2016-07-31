@@ -17,6 +17,9 @@ module.exports = function(config) {
     webpack: { //kind of a copy of your webpack config
       devtool: 'inline-source-map', //just do inline source maps instead of the default
       module: {
+        plugins: [
+          common.addStylePlugin()
+        ],
         loaders: common.stylingLoaders().concat([
           {
             test: /\.js$/,

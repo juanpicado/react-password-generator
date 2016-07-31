@@ -17,7 +17,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Snackbar from 'material-ui/Snackbar';
 import IconButton from 'material-ui/IconButton';
 import Toggle from 'material-ui/Toggle';
-import style from './password-style.scss';
+import styles from './password-style.css';
 
 var maxLength = 18;
 var minLength = 12;
@@ -30,53 +30,6 @@ var LOWERCASE_RE = /([a-z])/g;
 var NUMBER_RE = /([\d])/g;
 var SPECIAL_CHAR_RE = /([\?\-])/g;
 var NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
-
-const styles = {
-    container: {
-        textAlign: 'center',
-        paddingTop: 40,
-    },
-    block: {
-        maxWidth: 250,
-        textAlign: 'left',
-        margin: '20px auto',
-
-    },
-    input : {
-        textAlign: 'center',
-        padding: 20,
-        fontWeight: 'bolder',
-        fontSize: '2em'
-    },
-    sliders : {
-        padding: '0px 45px',
-        paddingTop: 10,
-    },
-    label : {
-        padding: '0px 25px',
-        fontSize: '2em'
-    },
-    password: {
-        color:'black',
-        fontSize: 18,
-        textAlign: 'center'
-    },
-    dialog_text: {
-        color:'black',
-        fontSize: 16,
-        width: '100%',
-        textAlign: 'center'
-    },
-    save_text: {
-        color:'black',
-        fontSize: 16,
-        width: '100%',
-        textAlign: 'center'
-    },
-    toggle: {
-        marginBottom: 16,
-    }
-};
 
 class PasswordInput extends Component {
     constructor(props) {
@@ -160,6 +113,11 @@ class PasswordInput extends Component {
         });
     };
     render() {
+        const password = {
+            color:'black',
+            fontSize: 18,
+            textAlign: 'center'
+        };
         const actions = [
             <FlatButton
                 label="Save"
@@ -184,7 +142,7 @@ class PasswordInput extends Component {
                     <TextField
                         disabled={true}
                         id="text-field-controlled"
-                        inputStyle={styles.password}
+                        inputStyle={password}
                         fullWidth={false}
                         underlineShow={false}
                         value={this.props.password}
@@ -251,27 +209,27 @@ class PasswordGeneratorApp extends Component {
                        clean={this.clean.bind(this)}
                        password={this.state.password}>
                    </PasswordInput>                   
-                   <div style={styles.block}>
+                   <div className={styles.block}>
                        <Toggle
                            label="Include Numbers"
-                           style={styles.toggle}
+                           className={styles.toggle}
                        />
                        <Toggle
                            label="Include Uppercase"
                            defaultToggled={true}
-                           style={styles.toggle}
+                           className={styles.toggle}
                        />
                        <Toggle
                            label="Ambiguous Characters"
-                           style={styles.toggle}
+                           className={styles.toggle}
                        />
                        <Toggle
                            label="ASCII Characters"
                            defaultToggled={true}
-                           style={styles.toggle}
+                           className={styles.toggle}
                        />
                    </div>
-                   <div style={styles.sliders}>
+                   <div className={styles.sliders}>
                         <Slider name="strong"
                             description="How strong you need the password?"
                             onChange={this.changeComplexity.bind(this)}
@@ -293,7 +251,7 @@ class PasswordGeneratorApp extends Component {
         }
         return (
             <div>
-                <div style={styles.container}>
+                <div className={styles.container}>
                     {input}
                 </div>
             </div>

@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
-    "server": "cross-env NODE_ENV=production webpack-dev-server --config webpack.server.conf.js --progress --inline --colors",
+    "server": "cross-env NODE_ENV=development webpack-dev-server --config webpack.server.conf.js --progress --inline --colors",
     "build": "cross-env NODE_ENV=production webpack",
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS --log-level debug",
     "test:watch": "./node_modules/karma/bin/karma start"
