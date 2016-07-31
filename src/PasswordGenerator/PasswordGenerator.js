@@ -31,6 +31,9 @@ var NUMBER_RE = /([\d])/g;
 var SPECIAL_CHAR_RE = /([\?\-])/g;
 var NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
 
+/**
+ * Password Input
+ */
 class PasswordInput extends Component {
     constructor(props) {
         super(props);
@@ -45,12 +48,6 @@ class PasswordInput extends Component {
             open: false
         });
     };
-    copy() {
-        cordova.plugins.clipboard.copy(this.props.password);
-        this.setState({
-            open: true
-        });
-    }
     shouldComponentUpdate() {
         let score = this.scorePassword(this.props.password);
         this.setState({
@@ -159,7 +156,9 @@ class PasswordInput extends Component {
     }
 }
 
-
+/**
+ * Password Generator.
+ */
 class Password {
     constructor(randomLength) {
         this.randomLength = randomLength || 8;
@@ -170,6 +169,9 @@ class Password {
     }
 }
 
+/**
+ * App.
+ */
 class PasswordGeneratorApp extends Component {
     constructor() {
         super();
@@ -199,33 +201,60 @@ class PasswordGeneratorApp extends Component {
        let c = complexity * 25;
        this.generateNewPassword(c);
     }
+    includeNumbers(event, value) {
+        this.setState({
+            numbers: value
+        });    
+    }
+    upperCase(event, value) {
+         this.setState({
+            upperCase: value
+        }); 
+    }
+    ambiguous(event, value) {
+         this.setState({
+            ambiguous: value
+        }); 
+    }
+    asciiCharacters(event, value) {
+         this.setState({
+            ascii: value
+        }); 
+    }
+
     render() {
+        console.log(JSON.stringify(this.state));
         var input = <span></span>;
-        if (this.state.password != "") {
-           console.log("password non empty");
+        if (this.state.password !== "") {
+           this.props.handler(this.state.password); 
            input = (
                <div className="test">
-                   <PasswordInput
+                   <PasswordInput 
                        clean={this.clean.bind(this)}
+                       {...this.state}
                        password={this.state.password}>
                    </PasswordInput>                   
                    <div className={styles.block}>
                        <Toggle
                            label="Include Numbers"
+                           onToggle={this.includeNumbers.bind(this)}
                            className={styles.toggle}
                        />
                        <Toggle
                            label="Include Uppercase"
                            defaultToggled={true}
+                           onToggle={this.upperCase.bind(this)}
                            className={styles.toggle}
                        />
                        <Toggle
                            label="Ambiguous Characters"
+                           onToggle={this.ambiguous.bind(this)}
                            className={styles.toggle}
                        />
                        <Toggle
                            label="ASCII Characters"
                            defaultToggled={true}
+                           onToggle={this.asciiCharacters.bind(this)}
                            className={styles.toggle}
                        />
                    </div>
@@ -240,10 +269,9 @@ class PasswordGeneratorApp extends Component {
                </div>
            );
         } else {
-            console.log("password non empty");
             input =(<div>
                 <RaisedButton
-                    label="Generate Password"
+                    label={this.props.title}
                     secondary={true}
                     onTouchTap={this.launchPassword.bind(this)}
                 />
