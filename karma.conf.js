@@ -1,5 +1,5 @@
 var path = require('path');
-
+var common = require('./webpack.common');
 module.exports = function(config) {
   config.set({
     basePath: '',
@@ -17,7 +17,7 @@ module.exports = function(config) {
     webpack: { //kind of a copy of your webpack config
       devtool: 'inline-source-map', //just do inline source maps instead of the default
       module: {
-        loaders: [
+        loaders: common.stylingLoaders().concat([
           {
             test: /\.js$/,
             loader: 'babel',
@@ -30,7 +30,7 @@ module.exports = function(config) {
             test: /\.json$/,
             loader: 'json',
           },
-        ]
+      ])
       },
       externals: {
         'react/lib/ExecutionEnvironment': true,
