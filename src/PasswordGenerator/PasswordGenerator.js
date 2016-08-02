@@ -19,17 +19,17 @@ import IconButton from 'material-ui/IconButton';
 import Toggle from 'material-ui/Toggle';
 import styles from './password-style.css';
 
-var maxLength = 18;
-var minLength = 12;
-var uppercaseMinCount = 3;
-var lowercaseMinCount = 3;
-var numberMinCount = 2;
-var specialMinCount = 2;
-var UPPERCASE_RE = /([A-Z])/g;
-var LOWERCASE_RE = /([a-z])/g;
-var NUMBER_RE = /([\d])/g;
-var SPECIAL_CHAR_RE = /([\?\-])/g;
-var NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
+const maxLength = 18;
+const minLength = 12;
+const uppercaseMinCount = 3;
+const lowercaseMinCount = 3;
+const numberMinCount = 2;
+const specialMinCount = 2;
+const UPPERCASE_RE = /([A-Z])/g;
+const LOWERCASE_RE = /([a-z])/g;
+const NUMBER_RE = /([\d])/g;
+const SPECIAL_CHAR_RE = /([\?\-])/g;
+const NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
 
 /**
  * Password Input
@@ -129,15 +129,17 @@ class PasswordInput extends Component {
                 onTouchTap={this.handleCancel.bind(this)}
             />
         ];
+        var className = styles.totalWith;
         var styles_dialog = styles.dialog_text;
         if (this.props.password.length >= 18) {
-            styles_dialog.fontSize = 12;
+           className = styles.password;
         }
         return  (
             <div>
                 <div>
                     <TextField
                         disabled={true}
+                        className={className}
                         id="text-field-controlled"
                         inputStyle={password}
                         fullWidth={false}
@@ -177,6 +179,10 @@ class PasswordGeneratorApp extends Component {
         super();
         this.state = {
             password : "",
+            numbers: false,
+            upperCase: true,
+            ambiguous: false,
+            ascii: true,
             complexity: 0.5
         }
     }
@@ -189,37 +195,72 @@ class PasswordGeneratorApp extends Component {
         let textPass = password.customPassword();
         this.changePassword(textPass);
     }
+
     changePassword(password) {
         this.setState({
             password: password
         });
     }
+
     clean() {
         this.changePassword("")
     }
+
     changeComplexity(event, complexity) {
        let c = complexity * 25;
        this.generateNewPassword(c);
     }
+
     includeNumbers(event, value) {
-        this.setState({
-            numbers: value
-        });    
+        if (!value) {
+            this.setState({
+                numbers: value,
+                ascii: true
+            });
+        } else {
+            this.setState({
+                numbers: value
+            });    
+        }
     }
+
     upperCase(event, value) {
-         this.setState({
-            upperCase: value
-        }); 
+         if (!this.state.ascii && value) {
+            this.setState({
+                ascii: true,
+                upperCase: value
+            });
+         } else {
+            this.setState({
+                upperCase: value
+            }); 
+        }
     }
+
     ambiguous(event, value) {
-         this.setState({
-            ambiguous: value
-        }); 
+        if (!this.state.ascii && value) {
+            this.setState({
+                ascii: true,
+                upperCase: value
+            });
+         } else {
+            this.setState({
+                ambiguous: value
+            }); 
+        } 
     }
     asciiCharacters(event, value) {
-         this.setState({
-            ascii: value
-        }); 
+        if (!this.state.numbers && !value) {
+            this.setState({
+                ascii: value,
+                numbers: true
+            });
+        } else {
+            this.setState({
+                ascii: value
+            }); 
+        }
+
     }
 
     render() {
@@ -236,13 +277,14 @@ class PasswordGeneratorApp extends Component {
                    </PasswordInput>                   
                    <div className={styles.block}>
                        <Toggle
+                           defaultToggled={this.state.numbers}
                            label="Include Numbers"
                            onToggle={this.includeNumbers.bind(this)}
                            className={styles.toggle}
                        />
                        <Toggle
                            label="Include Uppercase"
-                           defaultToggled={true}
+                           defaultToggled={this.state.upperCase}
                            onToggle={this.upperCase.bind(this)}
                            className={styles.toggle}
                        />
@@ -250,10 +292,11 @@ class PasswordGeneratorApp extends Component {
                            label="Ambiguous Characters"
                            onToggle={this.ambiguous.bind(this)}
                            className={styles.toggle}
+                           defaultToggled={this.state.ambiguous}
                        />
                        <Toggle
                            label="ASCII Characters"
-                           defaultToggled={true}
+                           defaultToggled={this.state.ascii}
                            onToggle={this.asciiCharacters.bind(this)}
                            className={styles.toggle}
                        />
